@@ -12,9 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('site.index');
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['prefix' => 'site', 'as' => 'site.'], function(){
+    Route::get('/', 'Site\IndexController@index')->name('index');
+});
+
