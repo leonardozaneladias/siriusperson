@@ -21,3 +21,26 @@ $factory->define(App\User::class, function (Faker $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Models\Category::class, function (Faker $faker) {
+    return [
+        'name' => $faker->word,
+        'status' => 1,
+    ];
+});
+
+$factory->define(App\Models\Photo::class, function (Faker $faker) {
+    return [
+
+    ];
+});
+
+
+$factory->define(App\Models\Product::class, function (Faker $faker) {
+    return [
+        'name' => $faker->name,
+        'description' => $faker->address,
+        'quantity_minimal' => rand(50,100),
+        'status' => 1,
+    ];
+});

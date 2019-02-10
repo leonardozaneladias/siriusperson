@@ -62,7 +62,7 @@
 						</span>
                 </div>
                 <div class="wrap-input100 validate-input" data-validate = "Preencher Username">
-                    <input class="input100" type="text" name="username" >
+                    <input class="input100" type="text" name="email" >
                     <span class="focus-input100"></span>
                 </div>
 
@@ -76,7 +76,7 @@
                     </a>
                 </div>
                 <div class="wrap-input100 validate-input" data-validate = "Preencher Password">
-                    <input class="input100" type="password" name="pass" >
+                    <input class="input100" type="password" name="password" >
                     <span class="focus-input100"></span>
                 </div>
 
