@@ -16,11 +16,14 @@ class CategoryTableSeeder extends Seeder
                 ->create([
                     'category_id' => $category->id
                 ])->each(function ($product) use ($category) {
-                    factory(\App\Models\Photo::class, 1)
-                        ->create([
-                            'product_id' => $product->id,
-                            'url' => $category->id.'.jpg'
-                        ]);
+                    for ($i=1;$i<=5;$i++){
+                        factory(\App\Models\Photo::class, 1)
+                            ->create([
+                                'product_id' => $product->id,
+                                'url' => rand(1,10).'.jpg'
+                            ]);
+                    }
+
                 });
         });
     }

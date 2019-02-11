@@ -97,20 +97,20 @@
 		globalDfd.done(function(){
 		$('.products_container:not(.a_type_2) .photoframe.animate_ftb').waypointSynchronise({
 			container : '.products_container',
-			delay : 200,
+			delay : 100,
 			offset : 700,
 			classN : "animate_vertical_finished"
 		});
 		$('.products_container.a_type_2 .photoframe.animate_ftb').waypointSynchronise({
 			container : '.products_container',
-			delay : 200,
+			delay : 100,
 			offset : 700,
 			classN : "animate_vertical_finished"
 		});
 		$('.wfilter_carousel .photoframe.animate_ftb').waypointSynchronise({
 			container : '.wfilter_carousel',
 			delay : 200,
-			offset : 700,
+			offset : 500,
 			classN : "animate_vertical_finished"
 		});
 		$('.bestsellers_carousel .photoframe.animate_ftb').waypointSynchronise({
@@ -136,8 +136,8 @@
 		$('.nav_buttons_wrap.animate_fade').waypointInit('animate_sj_finished animate_fade_finished','800px');
 		$('.product_brands a.animate_fade').waypointSynchronise({
 			container : '.product_brands',
-			delay : 200,
-			offset : 830,
+			delay : 100,
+			offset : 500,
 			classN : "animate_sj_finished animate_fade_finished"
 		});
 		$('.blog_carousel a.photoframe').waypointSynchronise({
@@ -160,8 +160,8 @@
 		$('.heading1.animate_ftr').waypointInit('animate_horizontal_finished','1000px');
 		$('.isotope_menu > li.animate_ftr').waypointSynchronise({
 			container : '.isotope_menu',
-			delay : 200,
-			offset : 1000,
+			delay : 50,
+			offset : 2000,
 			classN : "animate_horizontal_finished"
 		});
 		$('.flexslider.animate_ftr').waypointInit('animate_horizontal_finished','1000px');

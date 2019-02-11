@@ -18,7 +18,7 @@ class CreateQuotationsTable extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('phone');
-            $table->text('comments');
+            $table->text('comments')->nullable();
             $table->timestamps();
         });
     }
