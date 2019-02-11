@@ -23,7 +23,7 @@
                                 </button>
                                 <ul class="qv_carousel_single d_inline_middle">
                                     @foreach($product->photos()->get() as $photo)
-                                    <a href="#" data-image="{{asset("assets/images/products/{$photo->url}")}}" data-zoom-image="{{asset("assets/images/products/{$photo->url}")}}"><img src="{{asset("assets/images/products/{$photo->url}")}}" alt=""></a>
+                                    <a href="#" data-image="{{asset("assets/images/products/{$photo->url}")}}" data-zoom-image="{{asset("assets/images/products/{$photo->url}")}}"><img src="{{asset("assets/images/products/{$photo->url}")}}" alt="" style="width: 100px; height: 100px;"></a>
                                     @endforeach
                                 </ul>
                                 <button class="button_type_11 bg_light_color_1 t_align_c f_size_ex_large bg_cs_hover r_corners d_inline_middle bg_tr tr_all_hover qv_btn_single_next">
@@ -93,30 +93,39 @@
 {{--                            <div class="m_bottom_15">--}}
 {{--                                <s class="v_align_b f_size_ex_large">$152.00</s><span class="v_align_b f_size_big m_left_5 scheme_color fw_medium">$102.00</span>--}}
 {{--                            </div>--}}
-                            <table class="description_table type_2 m_bottom_15">
-                                <tr>
-                                    <td class="v_align_m">Size:</td>
-                                    <td class="v_align_m">
-                                        <div class="custom_select f_size_medium relative d_inline_middle">
-                                            <div class="select_title r_corners relative color_dark">Quantidade</div>
-                                            <ul class="select_list d_none"></ul>
-                                            <select name="product_name">
-                                                @php
-                                                    $quantity_minimal = $product->quantity_minimal;
-                                                    $max_multiplied = 5;
-                                                @endphp
+                            <form name="quotationkeep" action="{{route('site.quotation.keep')}}" method="get">
 
-                                                @for($i=$quantity_minimal;$i<=($quantity_minimal*$max_multiplied);$i+=$quantity_minimal)
-                                                    <option value="{{$i}}">{{$i}}</option>
-                                                @endfor
-                                            </select>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </table>
-                            <div class="d_ib_offset_0 m_bottom_20">
-                                <button class="button_type_12 r_corners bg_scheme_color color_light tr_delay_hover d_inline_b f_size_large">Adicionar no Orçamento</button>
-                            </div>
+                                <input type="hidden" name="product" value="{{$product->id}}">
+                                <table class="description_table type_2 m_bottom_15">
+                                    <tr>
+                                        <td class="v_align_m">Quantidade:</td>
+                                        <td class="v_align_m">
+                                            <div class="custom_select f_size_medium relative d_inline_middle">
+                                                <div class="select_title r_corners relative color_dark">{{$product->quantity_minimal}}</div>
+                                                <ul class="select_list d_none"></ul>
+
+                                                <select name="quantity" id="quantity" required>
+                                                    @php
+                                                        $quantity_minimal = $product->quantity_minimal;
+                                                        $max_multiplied = 5;
+                                                    @endphp
+
+                                                    @for($i=$quantity_minimal;$i<=($quantity_minimal*$max_multiplied);$i+=$quantity_minimal)
+                                                        <option value="{{$i}}">{{$i}}</option>
+                                                    @endfor
+                                                </select>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <div class="d_ib_offset_0 m_bottom_20">
+                                    @if($product_quotation)
+                                        <span class="button_type_12 r_corners color_light tr_delay_hover d_inline_b f_size_large" style="background: #2ecc71">ADICIONADO</span>
+                                    @else
+                                        <button class="button_type_12 r_corners bg_scheme_color color_light tr_delay_hover d_inline_b f_size_large">Adicionar no Orçamento</button>
+                                    @endif
+                                </div>
+                            </form>
 
                         </div>
                     </div>

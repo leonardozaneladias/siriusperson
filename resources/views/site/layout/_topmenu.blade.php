@@ -9,7 +9,7 @@
     <section class="h_bot_part container">
         <div class="clearfix row">
             <div class="col-lg-6 col-md-6 col-sm-4 t_xs_align_c">
-                <a href="index.html" class="logo m_xs_bottom_15 d_xs_inline_b">
+                <a href="{{route('site.index')}}" class="logo m_xs_bottom_15 d_xs_inline_b">
                     <img src="{{asset('assets/images/logo.png')}}" alt="">
                 </a>
             </div>

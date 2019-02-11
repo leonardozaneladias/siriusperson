@@ -2,27 +2,38 @@
 
 namespace App\Http\Controllers\Site;
 
-use App\Models\Product;
 use App\Models\Quotation;
 use App\Models\QuotationProducts;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use phpDocumentor\Reflection\Types\Integer;
 
 class QuotationKeepController extends Controller
 {
-    public function index(Request $request, Product $product, int $quantity)
+    public function index(Request $request)
     {
+        $id = $request->get('product');
+        $quantity = $request->get('quantity');
+        if($quantity<=0){
+            return redirect()->back();
+        }
 
         if($request->session()->has('quotation.products')){
-            $request->session()->push('quotation.products', ['product' => $product->id, 'quantity' => $product->quantity_minimal]);
+
+            foreach ($request->session()->get('quotation.products') as $s){
+                if($id == $s['product']){
+                    return redirect()->back();
+                }
+            }
+
+            $request->session()->push('quotation.products', ['product' => $id, 'quantity' => $quantity]);
         }else{
-            $request->session()->put('quotation.products', [['product' => $product->id, 'quantity' => $product->quantity_minimal]]);
+            $request->session()->put('quotation.products', [['product' => $id, 'quantity' => $quantity]]);
         }
         $request->session()->save();
         $layout = [
             'title' => 'Orçamento'
         ];
+
         return view('site.quotation_keep', compact('layout'));
     }
 

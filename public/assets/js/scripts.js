@@ -1534,4 +1534,9 @@ rMenu.init();
 
 	});
 
+	$(".filter-cat").click(function () {
+		var catid = $(this).attr('data-link');
+		window.location.href = catid;
+	});
+
 })(jQuery);

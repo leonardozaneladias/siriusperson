@@ -21,14 +21,19 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($products as $product)
-                            <tr>
-                                <td data-title="">(<a href="?remove_id={{$product->id}}">X</a>) {{$product->id}}</td>
-                                <td data-title=""><span class="f_size_large fw_medium scheme_color">{{$product->name}}</span></td>
-                                <td data-title="">{{$product->category->name}}</td>
-                                <td data-title="">{{$product->quantity_minimal}}</td>
-                            </tr>
-                            @endforeach
+                            @if(isset($products) and count($products) > 0)
+                                @foreach($products as $product)
+                                    @php
+                                        $prod = \App\Models\Product::find($product['product']);
+                                    @endphp
+                                <tr>
+                                    <td data-title="">(<a href="?remove_id={{$prod->id}}">X</a>) {{$prod->id}}</td>
+                                    <td data-title=""><span class="f_size_large fw_medium scheme_color">{{$prod->name}}</span></td>
+                                    <td data-title="">{{$prod->category->name}}</td>
+                                    <td data-title="">{{$product['quantity']}}</td>
+                                </tr>
+                                @endforeach
+                            @endif
                             </tbody>
                         </table>
                     </section>

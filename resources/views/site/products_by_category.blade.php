@@ -50,9 +50,7 @@
                                         <br>
 
 
-                                        <a href="{{route('site.quotation.keep', ['product' => $product->id, 'quantity' => 1])}}" class="button_type_4 bg_scheme_color r_corners tr_all_hover color_light mw_0 m_bottom_15">
-                                            Adicionar
-                                        </a>
+                                        <a href="{{route('site.product.view', ['id' => $product->id])}}" class="button_type_4 bg_scheme_color r_corners tr_all_hover color_light mw_0">Detalhes</a>
                                         <br>
                                     </figcaption>
                                 </figure>
@@ -94,7 +92,8 @@
                                 <!--checkboxes-->
                                 <fieldset class="m_bottom_15">
                                     @foreach(\App\Models\Category::where('status',1)->get(['id', 'name']) as $category)
-                                        <input type="checkbox" name="" id="checkbox_{{$category->id}}" class="d_none"><label
+                                        @php $checked = ''; if($id == $category->id){$checked = 'checked';} @endphp
+                                        <input {{$checked}} type="checkbox" name="" id="checkbox_{{$category->id}}" class="d_none filter-cat" data-link="{{route("site.products.category", ['id' => $category->id])}}"><label
                                                 for="checkbox_{{$category->id}}">{{$category->name}}</label><br>
                                     @endforeach
                                 </fieldset>

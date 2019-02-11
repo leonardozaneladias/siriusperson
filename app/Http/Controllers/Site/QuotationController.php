@@ -27,15 +27,6 @@ class QuotationController extends Controller
 
 
 
-        if(isset($products) and count($products) > 0){
-            foreach ($products as $p){
-                $prod_temp[] = $p['product'];
-            }
-            $products = Product::whereIn('id', $prod_temp)->get();
-        }else{
-            $products = [];
-        }
-
         $layout = [
             'title' => 'Orçamento'
         ];

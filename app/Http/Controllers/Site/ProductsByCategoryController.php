@@ -14,6 +14,6 @@ class ProductsByCategoryController extends Controller
         $layout = [
             'title' => 'Categorias de Produtos'
         ];
-        return view('site.products_by_category', compact('category', 'layout'));
+        return view('site.products_by_category', compact('category', 'layout', 'id'));
     }
 }
